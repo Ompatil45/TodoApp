@@ -1,0 +1,20 @@
+What each of the following lines do:
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+1.in The above line, (import.meta.url) this gives the current file's location as file:// URL,
+the fileURLToPath converts the URL into a normal filesystem path string
+2.the dirname takes the full file path from filename and strips off the filename,leaving just the directory the current file lives in
+
+app.get('/', (req,res) => {
+    res.sendFile(path.join(__dirname, '/public', 'index.html'))
+})
+
+1.this sends index.html as response,but it finds public folder inside the src folder which is not the case
+so,we introduce a middleware
+
+app.use(express.static(path.join(__dirname, '../public')))
+
+1.the ../public builds a path one directory above from wherever server.js lives
+
