@@ -227,7 +227,7 @@
                 // show dashboard
                 showDashboard()
             } else {
-                throw Error('❌ Failed to authenticate...')
+                throw Error(data.message || '❌ Failed to authenticate...')
             }
 
         } catch (err) {
