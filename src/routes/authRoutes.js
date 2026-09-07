@@ -8,6 +8,9 @@ const router = express.Router()
 router.post('/register', (req,res) => {
     const { username,password } = req.body //to get the body of incoming request
 
+    console.log('Trying to register:', JSON.stringify(username))
+    console.log('Current users:', db.prepare('SELECT id, username FROM users').all())
+
     //encrypt the password using bcrypt
     const hashedPassword = bcrypt.hashSync(password, 8)
     
