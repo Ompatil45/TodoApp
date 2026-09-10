@@ -1,0 +1,11 @@
+### GET / 
+GET http://localhost:8000
+
+### POST NEW USER
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "",
+    "password": ""
+}
